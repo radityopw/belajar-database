@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo apt update
+sudo apt install php-cli php-pgsql php-json
+sudo apt install postgresql
