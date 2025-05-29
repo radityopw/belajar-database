@@ -27,7 +27,7 @@
 5. Kimball R, Ross M. The data warehouse toolkit: The definitive guide to dimensional modeling. John Wiley & Sons; 2013 Jul 1.
 6. Date CJ. Database design and relational theory: normal forms and all that jazz. Apress; 2019 Dec 12. 
 
-### 1. Introduksi sistem basis data
+## 1. Introduksi sistem basis data
 
 Bagian ini siswa memahami gambaran umum landscape tentang database dengan detail : 
 
@@ -38,7 +38,7 @@ Bagian ini siswa memahami gambaran umum landscape tentang database dengan detail
 5. Arsitektur sistem dan RDBMS
 6. Metrik penting terkait sistem berorientasi data
 
-### 2. Bahasa Query dan Relational Model 
+## 2. Bahasa Query dan Relational Model 
 
 Bagian ini siswa memahami apa saja bentuk bahasa query yang ada secara praktikal dan matematis :
 
@@ -47,7 +47,7 @@ Bagian ini siswa memahami apa saja bentuk bahasa query yang ada secara praktikal
 3. SQL
 4. Advanced SQL
 
-### 3. Rancang Bangun Database
+## 3. Rancang Bangun Database
 
 Bagian ini siswa akan belajar merancang dan membangun solusi database :
 
@@ -58,7 +58,7 @@ Bagian ini siswa akan belajar merancang dan membangun solusi database :
 5. Physical Database Design
 6. Normalization
 
-### 4. Query Tuning dan Performance
+## 4. Query Tuning dan Performance
 
 Bagian ini siswa akan memahami efek dari query terhadap performa :
 
@@ -69,7 +69,7 @@ Bagian ini siswa akan memahami efek dari query terhadap performa :
 5. cache 
 6. database maintenance
 
-### 5. Keamanan, Replikasi dan Partisi
+## 5. Keamanan, Replikasi dan Partisi
 
 Bagian ini siswa akan memahami tentang :
 
@@ -79,7 +79,7 @@ Bagian ini siswa akan memahami tentang :
 4. Opsi Replikasi 
 5. Partisi
 
-### 6. Intellijen Bisnis
+## 6. Intellijen Bisnis
 
 Bagian ini siswa akan mempelajari secara umum terkait intellijen bisnis :
 
@@ -89,7 +89,7 @@ Bagian ini siswa akan mempelajari secara umum terkait intellijen bisnis :
 4. Desain ETL / ELT 
 5. Dashboarding   
 
-### 7. Introduksi Big Data
+## 7. Introduksi Big Data
 
 Bagian ini siswa akan mempelahari terkait introduksi big data :
 
