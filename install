@@ -7,6 +7,7 @@ sudo apt install openjdk-17-jdk
 sudo apt install sqlite3
 sudo apt install unzip
 sudo apt install libswt-gtk-4-java
+sudo apt install pgadmin3 pgmodeler
 
 mkdir ~/bin
 
