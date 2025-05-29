@@ -6,19 +6,24 @@ sudo apt install postgresql
 sudo apt install openjdk-17-jdk
 sudo apt install unzip
 sudo apt install libswt-gtk-4-java
-sudo apt install pgadmin4 pgmodeler
+sudo apt install pgmodeler
 
 mkdir ~/bin
 
 # install https://github.com/maaslalani/slides/releases
-cd ~/bin
-mkdir slides
-cd slides
-wget https://github.com/maaslalani/slides/releases/download/v0.9.0/slides_0.9.0_linux_amd64.tar.gz
-tar xvf slides_0.9.0_linux_amd64.tar.gz
-rm slides_0.9.0_linux_amd64.tar.gz
+read -p "APakah akan menghapus dan menginstall ulang slides ? (ketik ya jika ingin melakukan) " keputusan
 
-cd ~/bin
+if [ "$keputusan" = "ya" ]
+then
+
+	cd ~/bin
+	mkdir slides
+	cd slides
+	wget https://github.com/maaslalani/slides/releases/download/v0.9.0/slides_0.9.0_linux_amd64.tar.gz
+	tar xvf slides_0.9.0_linux_amd64.tar.gz
+	rm slides_0.9.0_linux_amd64.tar.gz
+
+fi
 
 # install  apache hop
 read -p "Apakah Akan menghapus dan Menginstall Ulang Apache Hop ? (ketik ya jika ingin melakukan) " keputusan
@@ -33,3 +38,17 @@ then
 fi
 
 cd 
+
+# install  dbbeaver 
+read -p "Apakah akan menghapus dan menginstall ulang dbbeaver ? (ketik ya jika ingin melakukan) " keputusan
+
+if [ "$keputusan" = "ya" ]
+then
+
+	cd ~/bin
+	rm -rf dbbeaver
+	wget https://dbeaver.io/files/dbeaver-ce-latest-linux.gtk.x86_64.tar.gz
+	tar xvf dbeaver-ce-latest-linux.gtk.x86_64.tar.gz
+	rm dbeaver-ce-latest-linux.gtk.x86_64.tar.gz
+
+fi
