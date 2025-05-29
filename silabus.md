@@ -66,8 +66,9 @@ Bagian ini siswa akan memahami efek dari query terhadap performa :
 2. Membandingkan Tabel bertipe Heap dan Clustered
 3. index tuning
 4. query tuning
-5. cache 
-6. database maintenance
+5. cache
+6. transaksi dan isolation level 
+7. database maintenance
 
 ## 5. Keamanan, Replikasi dan Partisi
 
