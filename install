@@ -3,3 +3,32 @@
 sudo apt update
 sudo apt install php-cli php-pgsql php-json
 sudo apt install postgresql
+sudo apt install openjdk-17-jdk
+sudo apt install sqlite3
+sudo apt install unzip
+
+mkdir ~/bin
+
+# install https://github.com/maaslalani/slides/releases
+cd ~/bin
+mkdir slides
+cd slides
+wget https://github.com/maaslalani/slides/releases/download/v0.9.0/slides_0.9.0_linux_amd64.tar.gz
+tar xvf slides_0.9.0_linux_amd64.tar.gz
+rm slides_0.9.0_linux_amd64.tar.gz
+
+cd ~/bin
+
+# install  apache hop
+read -p "Apakah Akan menghapus dan Menginstall Ulang Apache Hop ? (ketik ya jika ingin melakukan) " keputusan
+
+if [ "$keputusan" = "ya" ]
+then
+	cd ~/bin
+	rm -rf hop
+	wget https://dlcdn.apache.org/hop/2.14.0/apache-hop-client-2.14.0.zip
+	unzip apache-hop-client-2.14.0.zip
+	rm apache-hop-client-2.14.0.zip
+fi
+
+cd 
