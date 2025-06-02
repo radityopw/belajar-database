@@ -46,10 +46,11 @@ Bagian ini siswa memahami apa saja bentuk bahasa query yang ada secara praktikal
 2. Relational Algebra
 3. SQL
 4. Advanced SQL
+5. SET Thinking
 
 ## 3. Rancang Bangun Database
 
-Bagian ini siswa akan belajar merancang dan membangun solusi database :
+Bagian ini siswa akan belajar merancang solusi database :
 
 1. Database Development Lifecycle & Iconix Process 
 2. Enhanced Entity Relationship Modelling
@@ -88,7 +89,7 @@ Bagian ini siswa akan mempelajari secara umum terkait intellijen bisnis :
 2. 4 step Kimball Dimensional Modelling
 3. Desain Star schema 
 4. Desain ETL / ELT 
-5. Dashboarding   
+5. Dashboarding 
 
 ## 7. Introduksi Big Data
 
@@ -100,3 +101,4 @@ Bagian ini siswa akan mempelahari terkait introduksi big data :
 4. Open file format
 5. Open data format
 6. Map Reduce Programming Style
+7. Teknologi Dataframe
