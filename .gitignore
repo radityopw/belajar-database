@@ -2,3 +2,4 @@ bin/
 **/venv
 **/env
 **/__pydata__
+**/__pycache__
