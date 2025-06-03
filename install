@@ -3,12 +3,10 @@
 basedir=$(dirname $0)
 
 sudo apt update
-sudo apt install php-cli php-pgsql php-json sqlite3 python3 python3-pip python3-venv build-essential
 sudo apt install postgresql
 sudo apt install openjdk-17-jdk
-sudo apt install unzip
+sudo apt install unzip p7zip-full
 sudo apt install libswt-gtk-4-java
-sudo apt install libxml2-dev libxslt-dev python3-dev libpq-dev
 
 cd $basedir
 
