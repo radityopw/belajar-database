@@ -1,0 +1,27 @@
+#!/bin/bash
+
+current_dir=$(dirname $0)
+
+read -p "APakah akan menghapus dan menginstall ulang database employees ? (ketik ya jika ingin melakukan) " keputusan
+
+if [ "$keputusan" = "ya" ]
+then
+
+	sudo -u postgres psql -c "DROP DATABASE employees;"
+	sudo -u postgres psql -c "CREATE DATABASE employees;"
+	sudo -u postgres psql -d employees -c "CREATE SCHEMA employees;"
+
+	dir=$(mktemp -d)
+	chmod -R 777 $dir
+
+	cd $dir
+
+	wget https://raw.githubusercontent.com/neondatabase/postgres-sample-dbs/main/employees.sql.gz
+
+	sudo -u postgres pg_restore -d employees -Fc employees.sql.gz -c -v --no-owner --no-privileges
+
+	cd $current_dir
+
+	rm -rf $dir
+
+fi
