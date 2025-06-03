@@ -1,7 +1,0 @@
-*.todo
-*.7z
-*.xml
-*.pyc
-.env/
-private/
-./idea
