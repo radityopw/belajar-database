@@ -7,6 +7,7 @@ sudo apt install postgresql
 sudo apt install openjdk-17-jdk
 sudo apt install unzip p7zip-full
 sudo apt install libswt-gtk-4-java
+sudo apt install bzip2
 
 cd $basedir
 

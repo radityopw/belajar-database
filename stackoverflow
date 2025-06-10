@@ -11,107 +11,32 @@ then
 
 	sudo -u postgres psql -c "DROP DATABASE stackoverflow;"
 	sudo -u postgres psql -c "CREATE DATABASE stackoverflow;"
-	sudo -u postgres psql -d stackoverflow < stackoverflow-ddl.sql
 
 	dir=$(mktemp -d)
 
 	chmod -R 777 $dir
 
-	cp *.sql $dir
-
 	cd $dir
 
-	# users
-	wget https://ia800508.us.archive.org/30/items/stackexchange/stackoverflow.com-Users.7z
+	for i in {00..14}
+	do
+		filepart="https://github.com/radityopw/stackoverflow-postgresql/raw/refs/heads/main/stackoverflow-pg-2010-v0.1.tar.gz.part$i"
+		echo download $filepart
+		wget $filepart
 
-	7z e "stackoverflow.com-Users.7z"
-	rm "stackoverflow.com-Users.7z"
+	done
 
-	sudo -u postgres psql -d stackoverflow < stackoverflow-load-users.sql
+	cat *.part* > db.tar.gz
 
-	rm *.xml
+	rm *.part*
 
-	#badges
-	wget https://ia800508.us.archive.org/30/items/stackexchange/stackoverflow.com-Badges.7z
+	tar xfv db.tar.gz
 
-	7z e "stackoverflow.com-Badges.7z"
-	rm "stackoverflow.com-Badges.7z"
+	rm *.tar.gz
 
-	sudo -u postgres psql -d stackoverflow < stackoverflow-load-badges.sql
+	cd stackoverflow-postgres-2010-v0.1
 
-	rm *.xml
-
-	#comments
-
-	wget https://ia800508.us.archive.org/30/items/stackexchange/stackoverflow.com-Comments.7z
-
-	7z e "stackoverflow.com-Comments.7z"
-	rm "stackoverflow.com-Comments.7z"
-
-	sudo -u postgres psql -d stackoverflow < stackoverflow-load-comments.sql
-
-	rm *.xml
-
-	#Post History
-
-	wget https://ia800508.us.archive.org/30/items/stackexchange/stackoverflow.com-PostHistory.7z
-
-	7z e "stackoverflow.com-PostHistory.7z"
-	rm "stackoverflow.com-PostHistory.7z"
-
-	sudo -u postgres psql -d stackoverflow < stackoverflow-load-posthistory.sql
-
-	rm *.xml
-
-	#post links
-
-	wget https://ia800508.us.archive.org/30/items/stackexchange/stackoverflow.com-PostLinks.7z
-
-	7z e "stackoverflow.com-PostLinks.7z"
-	rm "stackoverflow.com-PostLinks.7z"
-
-	sudo -u postgres psql -d stackoverflow < stackoverflow-load-postlinks.sql
-
-	rm *.xml
-
-
-	#Posts
-
-	wget https://ia800508.us.archive.org/30/items/stackexchange/stackoverflow.com-Posts.7z
-
-	7z e "stackoverflow.com-Posts.7z"
-	rm "stackoverflow.com-Posts.7z"
-
-
-	sudo -u postgres psql -d stackoverflow < stackoverflow-load-posts.sql
-
-	rm *.xml
-
-
-	#tags
-
-	wget https://ia800508.us.archive.org/30/items/stackexchange/stackoverflow.com-Tags.7z
-
-	7z e "stackoverflow.com-Tags.7z"
-	rm "stackoverflow.com-Tags.7z"
-
-	sudo -u postgres psql -d stackoverflow < stackoverflow-load-tags.sql
-
-	rm *.xml
-
-
-	#votes
-
-	wget https://ia800508.us.archive.org/30/items/stackexchange/stackoverflow.com-Votes.7z
-
-	7z e "stackoverflow.com-Votes.7z"
-	rm "stackoverflow.com-Votes.7z"
-
-	sudo -u postgres psql -d stackoverflow < stackoverflow-load-votes.sql
-
-	rm *.xml
-
-	sudo -u postgres psql -d stackoverflow -c "DROP TABLE data_load;"
+	sudo -u postgres pg_restore -d stackoverflow -O dump-stackoverflow2010-202408101013.dump
 
 	cd $current_dir
 
