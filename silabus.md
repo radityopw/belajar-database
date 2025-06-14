@@ -8,15 +8,18 @@
 
 1. radityo prasetianto wibowo | radityo.p.w@its.ac.id
 
+## Tools 
+
+1. Ubuntu 24.04
+2. PostgreSQL Server & client (cli)
+3. Apache Nifi
+
 ## High Level Silabus 
 
-1. Introduksi sistem basis data  
-2. Bahasa Query dan Relational Model
-3. Rancang Bangun Database
-4. Query Tuning dan Performa
-5. Keamanan, Replikasi dan Partisi 
-6. Intellijen Bisnis
-7. Introduksi Big Data
+1. Introduksi sistem basis data
+2. Rancang Bangun database untuk pembangunan aplikasi
+3. performa sistem basis data
+4. Intellijen Bisnis
 
 ## Referensi
 
@@ -26,6 +29,7 @@
 4. Kleppmann M. Designing data-intensive applications: The big ideas behind reliable, scalable, and maintainable systems. " O'Reilly Media, Inc."; 2017 Mar 16.
 5. Kimball R, Ross M. The data warehouse toolkit: The definitive guide to dimensional modeling. John Wiley & Sons; 2013 Jul 1.
 6. Date CJ. Database design and relational theory: normal forms and all that jazz. Apress; 2019 Dec 12. 
+7. Hironobu Suzuki; Postgresql Internal; https://www.interdb.jp/pg/; 
 
 ## 1. Introduksi sistem basis data
 
@@ -35,20 +39,10 @@ Bagian ini siswa memahami gambaran umum landscape tentang database dengan detail
 2. bagaimana sistem menyimpan data dengan file 
 3. kekurangan sistem file dan urgensi menggunakan sistem basis data
 4. jenis - jenis sistem basis data, perbedaan dan mengapa ada
-5. Arsitektur sistem dan RDBMS
+5. Arsitektur sistem dan RDBMS serta Non Relational 
 6. Metrik penting terkait sistem berorientasi data
 
-## 2. Bahasa Query dan Relational Model 
-
-Bagian ini siswa memahami apa saja bentuk bahasa query yang ada secara praktikal dan matematis :
-
-1. perkembangan bentuk bahasa query dari masa ke masa 
-2. Relational Algebra
-3. SQL
-4. Advanced SQL
-5. SET Thinking
-
-## 3. Rancang Bangun Database
+## 2. Rancang Bangun Database Untuk Pembangunan Aplikasi
 
 Bagian ini siswa akan belajar merancang solusi database :
 
@@ -57,31 +51,20 @@ Bagian ini siswa akan belajar merancang solusi database :
 3. Conceptual Database Design
 4. Logical Database Design
 5. Physical Database Design
-6. Normalization
+6. Normalization dan Denormalization
+7. Setting Role dan security
 
-## 4. Query Tuning dan Performance
+## 3. Performa Sistem Basis Data
 
-Bagian ini siswa akan memahami efek dari query terhadap performa :
+Bagian ini siswa akan mempelajari bagaimana internal dari sistem basis data :
 
-1. bagaimana query engine bekerja 
-2. Membandingkan Tabel bertipe Heap dan Clustered
-3. index tuning
-4. query tuning
-5. cache
-6. transaksi dan isolation level 
-7. database maintenance
+1. Internal dari Database Cluster, Database, dan Tables
+2. Arsitektur Proses dan Memory
+3. Query Processing
+4. Concurrency Control dan Isolation Level
+5. VACUUM Processing
 
-## 5. Keamanan, Replikasi dan Partisi
-
-Bagian ini siswa akan memahami tentang :
-
-1. manajemen user dan role
-2. Manajemen Backup dan Restore 
-3. Recovery Point Objective dan Recovery Time Objective
-4. Opsi Replikasi 
-5. Partisi
-
-## 6. Intellijen Bisnis
+## 4. Intellijen Bisnis
 
 Bagian ini siswa akan mempelajari secara umum terkait intellijen bisnis :
 
@@ -89,16 +72,5 @@ Bagian ini siswa akan mempelajari secara umum terkait intellijen bisnis :
 2. 4 step Kimball Dimensional Modelling
 3. Desain Star schema 
 4. Desain ETL / ELT 
-5. Dashboarding 
-
-## 7. Introduksi Big Data
-
-Bagian ini siswa akan mempelahari terkait introduksi big data :
-
-1. Apa itu Big Data, dan mengapa dibutuhkan ?
-2. Arsitektur Big data dengan data lake 
-3. Arsitektur Big data dengan datalakehouse 
-4. Open file format
-5. Open data format
-6. Map Reduce Programming Style
-7. Teknologi Dataframe
+5. Pendekatan Data Lake 
+6. Open File Format yang populer 

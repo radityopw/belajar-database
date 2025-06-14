@@ -2,10 +2,9 @@
 belajar database , silabus, materi.
 
 ## tools
-1. Ubuntu-20.04
-2. php-cli 
-3. postgresql server dan client 
-4. apache hop
-5. details lihat install
+1. Ubuntu-24.04
+2. postgresql server dan client 
+3. apache hop
+4. details lihat install
 
 

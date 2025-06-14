@@ -4,58 +4,27 @@ basedir=$(dirname $0)
 
 sudo apt update
 sudo apt install postgresql
-sudo apt install openjdk-17-jdk
-sudo apt install unzip p7zip-full
-sudo apt install libswt-gtk-4-java
+sudo apt install openjdk-21-jdk-headless
 sudo apt install bzip2
+sudo apt install python3 python3-venv python3-pip
 
 cd $basedir
 
 mkdir bin
 
-# install https://github.com/maaslalani/slides/releases
-read -p "APakah akan menghapus dan menginstall ulang slides ? (ketik ya jika ingin melakukan) " keputusan
-
-if [ "$keputusan" = "ya" ]
-then
-
-	cd bin
-	mkdir slides
-	cd slides
-	wget https://github.com/maaslalani/slides/releases/download/v0.9.0/slides_0.9.0_linux_amd64.tar.gz
-	tar xvf slides_0.9.0_linux_amd64.tar.gz
-	rm slides_0.9.0_linux_amd64.tar.gz
-
-fi
-
 cd $basedir
 
 # install  apache hop
-read -p "Apakah Akan menghapus dan Menginstall Ulang Apache Hop ? (ketik ya jika ingin melakukan) " keputusan
+read -p "Apakah Akan menghapus dan Menginstall Ulang Apache Nifi ? (ketik ya jika ingin melakukan) " keputusan
 
 if [ "$keputusan" = "ya" ]
 then
 	cd bin
-	rm -rf hop
-	wget https://dlcdn.apache.org/hop/2.14.0/apache-hop-client-2.14.0.zip
-	unzip apache-hop-client-2.14.0.zip
-	rm apache-hop-client-2.14.0.zip
+	rm -rf nifi
+	wget https://dlcdn.apache.org/nifi/2.4.0/nifi-2.4.0-bin.zip
+	unzip nifi-2.4.0-bin.zip
+	rm nifi-2.4.0.zip
 fi
 
-cd $basedir
-
-# install  dbbeaver 
-read -p "Apakah akan menghapus dan menginstall ulang dbbeaver ? (ketik ya jika ingin melakukan) " keputusan
-
-if [ "$keputusan" = "ya" ]
-then
-
-	cd ~/bin
-	rm -rf dbbeaver
-	wget https://dbeaver.io/files/dbeaver-ce-latest-linux.gtk.x86_64.tar.gz
-	tar xvf dbeaver-ce-latest-linux.gtk.x86_64.tar.gz
-	rm dbeaver-ce-latest-linux.gtk.x86_64.tar.gz
-
-fi
 
 sudo systemctl disable postgresql
