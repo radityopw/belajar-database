@@ -5,6 +5,7 @@ belajar database , silabus, materi.
 1. Ubuntu-24.04
 2. postgresql server dan client 
 3. apache hop
-4. details lihat install
+4. dbbeaver
+5. details lihat install
 
 
