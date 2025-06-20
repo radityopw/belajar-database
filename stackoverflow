@@ -10,7 +10,9 @@ if [ "$keputusan" = "ya" ]
 then
 
 	sudo -u postgres psql -c "DROP DATABASE stackoverflow;"
-	sudo -u postgres psql -c "CREATE DATABASE stackoverflow;"
+	sudo -u postgres psql -c "DROP USER stackoverflow_user;"
+	sudo -u postgres psql -c "CREATE USER stackoverflow_user WITH PASSWORD 'stackoverflow_pass';";
+	sudo -u postgres psql -c "CREATE DATABASE stackoverflow OWNER stackoverflow_user;"
 
 	dir=$(mktemp -d)
 
@@ -36,7 +38,7 @@ then
 
 	cd stackoverflow-postgres-2010-v0.1
 
-	sudo -u postgres pg_restore -d stackoverflow -O dump-stackoverflow2010-202408101013.dump
+	sudo -u postgres pg_restore -d stackoverflow dump-stackoverflow2010-202408101013.dump
 
 	cd $current_dir
 
