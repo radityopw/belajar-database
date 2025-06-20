@@ -12,7 +12,8 @@
 
 1. Ubuntu 24.04
 2. PostgreSQL Server & client (cli)
-3. Apache Nifi
+3. Apache Hop
+4. DBbeaver
 
 ## High Level Silabus 
 
