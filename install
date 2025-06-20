@@ -3,10 +3,7 @@
 basedir=$(dirname $0)
 
 sudo apt update
-sudo apt install postgresql
-sudo apt install openjdk-17-jdk
-sudo apt install bzip2
-sudo apt install php-cli php-pgsql
+sudo apt install postgresql openjdk-17-jdk bzip2 unzip php-cli php-pgsql libswt-gtk-4-java
 
 cd $basedir
 mkdir bin
