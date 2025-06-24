@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package tutorial;
+
+message Data{
+	string userName = 1;
+	int32 favoriteNumber = 2;
+	repeated string interests = 3;
+} 

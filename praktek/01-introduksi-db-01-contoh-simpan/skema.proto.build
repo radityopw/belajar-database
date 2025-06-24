@@ -1,0 +1,3 @@
+# /bin/bash
+
+../../bin/protoc/bin/protoc --proto_path=. --php_out=. skema.proto

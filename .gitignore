@@ -3,3 +3,6 @@ bin/
 **/env
 **/__pydata__
 **/__pycache__
+**/GPBMetadata
+**/*.dat
+**/Tutorial
