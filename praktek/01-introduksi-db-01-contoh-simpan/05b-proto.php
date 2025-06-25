@@ -7,7 +7,7 @@ include 'GPBMetadata/Skema.php';
 include 'Tutorial/Data.php';
 
 $obj = new Data();
-$obj->mergeFromString(file_get_contents('04-proto.dat'));
+$obj->mergeFromString(file_get_contents('05-proto.dat'));
 
 echo $obj->getUserName().PHP_EOL;
 echo $obj->getFavoriteNumber().PHP_EOL;
