@@ -1,0 +1,14 @@
+#! /bin/bash
+
+current_dir=$(dirname $0)
+
+cd $current_dir
+
+rm -rf data
+mkdir data
+cd data
+
+wget https://www.kaggle.com/api/v1/datasets/download/usdot/flight-delays
+mv flight-delays flight-delays.zip
+unzip flight-delays.zip
+rm flight-delays.zip
