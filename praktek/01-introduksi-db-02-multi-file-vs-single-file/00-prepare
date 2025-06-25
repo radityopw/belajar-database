@@ -12,3 +12,5 @@ wget https://www.kaggle.com/api/v1/datasets/download/usdot/flight-delays
 mv flight-delays flight-delays.zip
 unzip flight-delays.zip
 rm flight-delays.zip
+head -n 100000 flights.csv > flights2.csv
+rm flights.csv
