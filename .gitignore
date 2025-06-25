@@ -6,3 +6,5 @@ bin/
 **/GPBMetadata
 **/*.dat
 **/Tutorial
+**/Vendor
+**/vendor
