@@ -38,10 +38,12 @@ then
 
 	cd stackoverflow-postgres-2010-v0.1
 
-	sudo -u postgres pg_restore -d stackoverflow dump-stackoverflow2010-202408101013.dump
+	sudo -u postgres pg_restore --no-owner --no-privileges --role=stackoverflow_user -d stackoverflow dump-stackoverflow2010-202408101013.dump
 
 	cd $current_dir
 
 	rm -rf $dir
+
+	#sudo -u postgres -d stackoverflow -c "REASSIGN OWNED BY postgres TO stackoverflow_user;"
 
 fi
