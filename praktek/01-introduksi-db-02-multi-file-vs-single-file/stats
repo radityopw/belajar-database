@@ -1,0 +1,16 @@
+#! /bin/bash
+
+# 1. Gunakan 'time' untuk Total Execution Time (Real/Elapsed Time)
+# 2. Gunakan 'strace -c' untuk Total CPU Time (System Call Time)
+#    dan juga menghitung total file operations (open, read, write)
+# 3. Output strace dialihkan ke file untuk analisis lebih lanjut
+
+log=$(mktemp)
+
+echo "--- Mengukur Waktu Eksekusi dan System Calls ---"
+(time strace -c -f -e trace=file,memory -o $log $@) 2>&1
+
+cat $log
+
+rm $log
+
