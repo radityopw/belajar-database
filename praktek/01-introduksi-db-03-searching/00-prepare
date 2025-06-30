@@ -1,5 +1,6 @@
 #! /bin/bash
 
 ln -s ../01-introduksi-db-02-multi-file-vs-single-file/db .
+ln -s ../01-introduksi-db-02-multi-file-vs-single-file/data .
 ln -s ../01-introduksi-db-02-multi-file-vs-single-file/common.php .
 ln -s ../01-introduksi-db-02-multi-file-vs-single-file/stats .

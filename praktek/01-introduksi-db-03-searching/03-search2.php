@@ -3,6 +3,8 @@ require 'common.php';
 
 $dbFolder = 'db/single-file';
 
+$idxFolder = $dbFolder.'/single-file-idx/idx-flight-1';
+
 function getNameAirline($code) {
 	global $dbFolder, $len, $pack;
 
@@ -90,9 +92,24 @@ $sCode = "VX";
 $rIterator = 0;
 $bRecordFlight = $len['year']+$len['month']+$len['day']+$len['codeAirline']+$len['flightNumber']+(2 * $len['codeAirport']);
 
+
 $fpFlights = fopen($dbFolder.'/flights',"r");
 
-while ( !feof( $fpFlights ) ) {
+
+$idxFile = $sCode."-".$sYear."-".$sMonth;
+$fpIdx = fopen($idxFolder.'/'.$idxFile,"r");
+
+$bRecordIdx = 4; // 32 bit , 4 byte
+
+while ( !feof( $fpIdx ) ) {
+
+	$recordIdx = fread($fpIdx,$bRecordIdx);
+
+	$offsetIdx = @unpack("L",$recordIdx)[1];
+
+	if ( !$offsetIdx ) break;
+
+	fseek($fpFlights,$offsetIdx,SEEK_SET);
 
 	$record = fread($fpFlights,$bRecordFlight);
 
@@ -126,20 +143,16 @@ while ( !feof( $fpFlights ) ) {
 
 	$offset+=$len['codeAirport'];
 
-	if ( $year == $sYear && $month == $sMonth && $code == $sCode ) {
+	$rIterator++;
 
-		$rIterator++;
-
-		echo "----------".$rIterator."-----------".PHP_EOL;
-		echo $year.PHP_EOL;
-		echo $month.PHP_EOL;
-		echo $day.PHP_EOL;
-		echo "airline : ".$code." ( ".getNameAirline($code)." ) ".PHP_EOL;
-		echo "flight Number : ".$flightNumber.PHP_EOL;
-		echo "From : ".$airportFrom." ( ".getNameAirport($airportFrom)." ) to ".$airportTo." ( ".getNameAirport($airportTo)." ) ".PHP_EOL;
-
-	}
-
+	echo "----------".$rIterator."-----------".PHP_EOL;
+	echo $year.PHP_EOL;
+	echo $month.PHP_EOL;
+	echo $day.PHP_EOL;
+	echo "airline : ".$code." ( ".getNameAirline($code)." ) ".PHP_EOL;
+	echo "flight Number : ".$flightNumber.PHP_EOL;
+	echo "From : ".$airportFrom." ( ".getNameAirport($airportFrom)." ) to ".$airportTo." ( ".getNameAirport($airportTo)." ) ".PHP_EOL;
 }
 
+fclose($fpIdx);
 fclose($fpFlights);
