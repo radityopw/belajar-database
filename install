@@ -28,6 +28,15 @@ rm protoc-31.1-linux-x86_64.zip
 
 cd ..
 
+# install heidisql
+
+mkdir heidisql
+cd heidisql
+
+wget https://www.heidisql.com/downloads/releases/HeidiSQL_12.11.1.167.deb
+sudo dpkg -i HeidiSQL_12.11.1.167.deb
+rm HeidiSQL_12.11.1.167.deb
+
 # install apache hop
 read -p "Apakah Akan menghapus dan Menginstall Ulang Apache Hop ? (ketik ya jika ingin melakukan) " keputusan
 
