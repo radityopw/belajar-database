@@ -1,8 +1,0 @@
-#! /bin/bash
-
-sudo -u postgres psql -c "DROP DATABASE akademik01;"
-sudo -u postgres psql -c "DROP USER akademik01_user;"
-sudo -u postgres psql -c "CREATE USER akademik01_user WITH PASSWORD 'akademik01_pass';"
-sudo -u postgres psql -c "CREATE DATABASE akademik01 OWNER akademik01_user;"
-
-sudo -u postgres psql -d akademik01 < FRS-Physical-v3_create.sql
