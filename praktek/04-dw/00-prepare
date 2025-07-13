@@ -1,0 +1,40 @@
+#! /bin/bash
+
+current_dir=$(pwd)
+#echo $current_dir
+PGPASSWORD="dw_pass"
+#echo $PGPASSWORD
+
+sudo -u postgres psql -c "DROP DATABASE dw_rental;"
+sudo -u postgres psql -c "DROP DATABASE employees;"
+sudo -u postgres psql -c "DROP DATABASE dvdrental;"
+sudo -u postgres psql -c "DROP USER dw_user;"
+
+sudo -u postgres psql -c "CREATE USER dw_user WITH password '$PGPASSWORD';"
+
+sudo -u postgres psql -c "CREATE DATABASE dvdrental WITH OWNER dw_user;"
+
+dir=$(mktemp -d)
+chmod -R 777 $dir
+
+cd $dir
+
+wget https://neon.com/postgresqltutorial/dvdrental.zip
+unzip dvdrental.zip
+rm dvdrental.zip
+
+sudo -u postgres pg_restore -d dvdrental --role=dw_user -c -v --no-owner --no-privileges dvdrental.tar
+
+rm dvdrental.tar
+
+cd $current_dir
+rm -rf $dir
+
+
+cp dw.sql /tmp
+chmod 777 /tmp/dw.sql
+
+sudo -u postgres psql -c "CREATE DATABASE dw_rental WITH OWNER dw_user;"
+sudo -u postgres psql postgresql://dw_user:$PGPASSWORD@127.0.0.1:5432/dw_rental -f /tmp/dw.sql
+
+rm /tmp/dw.sql
