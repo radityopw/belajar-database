@@ -6,7 +6,6 @@ PGPASSWORD="dw_pass"
 #echo $PGPASSWORD
 
 sudo -u postgres psql -c "DROP DATABASE dw_rental;"
-sudo -u postgres psql -c "DROP DATABASE employees;"
 sudo -u postgres psql -c "DROP DATABASE dvdrental;"
 sudo -u postgres psql -c "DROP USER dw_user;"
 
