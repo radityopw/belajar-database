@@ -7,6 +7,8 @@ PGPASSWORD="dw_pass"
 
 sudo -u postgres psql -c "DROP DATABASE dw_rental;"
 sudo -u postgres psql -c "DROP DATABASE dvdrental;"
+sudo -u postgres psql -c "DROP DATABASE staging_rental;"
+
 sudo -u postgres psql -c "DROP USER dw_user;"
 
 sudo -u postgres psql -c "CREATE USER dw_user WITH password '$PGPASSWORD';"
@@ -29,6 +31,9 @@ rm dvdrental.tar
 cd $current_dir
 rm -rf $dir
 
+
+
+sudo -u postgres psql -c "CREATE DATABASE staging_rental WITH OWNER dw_user;"
 
 cp dw.sql /tmp
 chmod 777 /tmp/dw.sql
