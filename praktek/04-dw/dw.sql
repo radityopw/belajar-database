@@ -21,18 +21,6 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: _sys_run_log; Type: TABLE; Schema: public; Owner: dw_user
---
-
-CREATE TABLE public._sys_run_log (
-    src_table character varying(255) NOT NULL,
-    src_last_sysdate timestamp without time zone
-);
-
-
-ALTER TABLE public._sys_run_log OWNER TO dw_user;
-
---
 -- Name: dim_actor; Type: TABLE; Schema: public; Owner: dw_user
 --
 
@@ -697,18 +685,24 @@ ALTER SEQUENCE public.dim_staff_id_seq OWNED BY public.dim_staff.id;
 --
 
 CREATE TABLE public.dim_waktu (
-    id character(1) NOT NULL,
+    id character(8) NOT NULL,
     day integer NOT NULL,
     month integer NOT NULL,
     year integer NOT NULL,
     week integer NOT NULL,
-    holiday_status character varying(10) NOT NULL,
     weekend_status character varying(10) NOT NULL,
     quarter integer NOT NULL
 );
 
 
 ALTER TABLE public.dim_waktu OWNER TO dw_user;
+
+--
+-- Name: COLUMN dim_waktu.week; Type: COMMENT; Schema: public; Owner: dw_user
+--
+
+COMMENT ON COLUMN public.dim_waktu.week IS 'week of month';
+
 
 --
 -- Name: fact_film_actor; Type: TABLE; Schema: public; Owner: dw_user
@@ -748,6 +742,13 @@ CREATE TABLE public.fact_rental (
 
 
 ALTER TABLE public.fact_rental OWNER TO dw_user;
+
+--
+-- Name: COLUMN fact_rental.dim_waktu_id; Type: COMMENT; Schema: public; Owner: dw_user
+--
+
+COMMENT ON COLUMN public.fact_rental.dim_waktu_id IS 'waktu payment';
+
 
 --
 -- Name: COLUMN fact_rental.amount; Type: COMMENT; Schema: public; Owner: dw_user
@@ -799,21 +800,6 @@ ALTER TABLE ONLY public.dim_staff ALTER COLUMN id SET DEFAULT nextval('public.di
 
 
 --
--- Data for Name: _sys_run_log; Type: TABLE DATA; Schema: public; Owner: dw_user
---
-
-COPY public._sys_run_log (src_table, src_last_sysdate) FROM stdin;
-actor	\N
-category	\N
-customer	\N
-film	\N
-staff	\N
-rental	\N
-payment	\N
-\.
-
-
---
 -- Data for Name: dim_actor; Type: TABLE DATA; Schema: public; Owner: dw_user
 --
 
@@ -857,7 +843,7 @@ COPY public.dim_staff (id, source_id, first_name, last_name, address_id, address
 -- Data for Name: dim_waktu; Type: TABLE DATA; Schema: public; Owner: dw_user
 --
 
-COPY public.dim_waktu (id, day, month, year, week, holiday_status, weekend_status, quarter) FROM stdin;
+COPY public.dim_waktu (id, day, month, year, week, weekend_status, quarter) FROM stdin;
 \.
 
 
@@ -910,14 +896,6 @@ SELECT pg_catalog.setval('public.dim_film_id_seq', 1, false);
 --
 
 SELECT pg_catalog.setval('public.dim_staff_id_seq', 1, false);
-
-
---
--- Name: _sys_run_log _sys_run_log_src_table; Type: CONSTRAINT; Schema: public; Owner: dw_user
---
-
-ALTER TABLE ONLY public._sys_run_log
-    ADD CONSTRAINT _sys_run_log_src_table PRIMARY KEY (src_table);
 
 
 --

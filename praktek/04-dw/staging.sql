@@ -21,6 +21,18 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: _sys_run_log; Type: TABLE; Schema: public; Owner: dw_user
+--
+
+CREATE TABLE public._sys_run_log (
+    src_table character varying(255) NOT NULL,
+    src_last_sysdate timestamp without time zone
+);
+
+
+ALTER TABLE public._sys_run_log OWNER TO dw_user;
+
+--
 -- Name: actor; Type: TABLE; Schema: public; Owner: dw_user
 --
 
@@ -171,6 +183,23 @@ CREATE TABLE public.staff (
 ALTER TABLE public.staff OWNER TO dw_user;
 
 --
+-- Data for Name: _sys_run_log; Type: TABLE DATA; Schema: public; Owner: dw_user
+--
+
+COPY public._sys_run_log (src_table, src_last_sysdate) FROM stdin;
+actor	\N
+category	\N
+customer	\N
+film	\N
+staff	\N
+rental	\N
+payment	\N
+film_actor	\N
+film_category	\N
+\.
+
+
+--
 -- Data for Name: actor; Type: TABLE DATA; Schema: public; Owner: dw_user
 --
 
@@ -240,6 +269,14 @@ COPY public.rental (rental_id, rental_date, inventory_id, customer_id, return_da
 
 COPY public.staff (staff_id, first_name, last_name, address_id, email, store_id, active, username, password, last_update, picture) FROM stdin;
 \.
+
+
+--
+-- Name: _sys_run_log _sys_run_log_src_table; Type: CONSTRAINT; Schema: public; Owner: dw_user
+--
+
+ALTER TABLE ONLY public._sys_run_log
+    ADD CONSTRAINT _sys_run_log_src_table PRIMARY KEY (src_table);
 
 
 --
