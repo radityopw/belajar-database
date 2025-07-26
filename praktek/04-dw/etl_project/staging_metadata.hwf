@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflow>
-  <name>staging</name>
+  <name>staging_metadata</name>
   <name_sync_with_filename>Y</name_sync_with_filename>
   <description/>
   <extended_description/>
   <workflow_version/>
   <created_user>-</created_user>
-  <created_date>2025/07/23 07:50:36.988</created_date>
+  <created_date>2025/07/26 02:26:15.949</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2025/07/23 07:50:36.988</modified_date>
+  <modified_date>2025/07/26 02:26:15.949</modified_date>
   <parameters>
     </parameters>
   <actions>
@@ -31,6 +31,58 @@
       <attributes_hac/>
     </action>
     <action>
+      <name>staging_run_metadata.hpl</name>
+      <description/>
+      <type>PIPELINE</type>
+      <attributes/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <clear_files>N</clear_files>
+      <clear_rows>N</clear_rows>
+      <create_parent_folder>N</create_parent_folder>
+      <exec_per_row>N</exec_per_row>
+      <filename>${PROJECT_HOME}/staging_run_metadata.hpl</filename>
+      <loglevel>Basic</loglevel>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <params_from_previous>N</params_from_previous>
+      <run_configuration>local</run_configuration>
+      <set_append_logfile>N</set_append_logfile>
+      <set_logfile>N</set_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <parallel>N</parallel>
+      <xloc>288</xloc>
+      <yloc>80</yloc>
+      <attributes_hac/>
+    </action>
+    <action>
+      <name>staging_exec_metadata.hpl</name>
+      <description/>
+      <type>PIPELINE</type>
+      <attributes/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <clear_files>N</clear_files>
+      <clear_rows>N</clear_rows>
+      <create_parent_folder>N</create_parent_folder>
+      <exec_per_row>Y</exec_per_row>
+      <filename>${PROJECT_HOME}/staging_exec_metadata.hpl</filename>
+      <loglevel>Basic</loglevel>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <params_from_previous>N</params_from_previous>
+      <run_configuration>local</run_configuration>
+      <set_append_logfile>N</set_append_logfile>
+      <set_logfile>N</set_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <parallel>N</parallel>
+      <xloc>624</xloc>
+      <yloc>80</yloc>
+      <attributes_hac/>
+    </action>
+    <action>
       <name>update metadata di staging</name>
       <description/>
       <type>SQL</type>
@@ -43,99 +95,35 @@ WHERE src_last_sysdate IS NULL;</sql>
       <sqlfromfile>N</sqlfromfile>
       <useVariableSubstitution>N</useVariableSubstitution>
       <parallel>N</parallel>
-      <xloc>208</xloc>
-      <yloc>112</yloc>
+      <xloc>224</xloc>
+      <yloc>208</yloc>
       <attributes_hac/>
     </action>
     <action>
-      <name>staging_actor.hpl</name>
-      <description/>
-      <type>PIPELINE</type>
-      <attributes/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <clear_files>N</clear_files>
-      <clear_rows>N</clear_rows>
-      <create_parent_folder>N</create_parent_folder>
-      <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/staging_actor.hpl</filename>
-      <loglevel>Basic</loglevel>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
-      <params_from_previous>N</params_from_previous>
-      <run_configuration>local</run_configuration>
-      <set_append_logfile>N</set_append_logfile>
-      <set_logfile>N</set_logfile>
-      <wait_until_finished>Y</wait_until_finished>
-      <parallel>N</parallel>
-      <xloc>432</xloc>
-      <yloc>112</yloc>
-      <attributes_hac/>
-    </action>
-    <action>
-      <name>update actor last update</name>
+      <name>update last_update</name>
       <description/>
       <type>SQL</type>
       <attributes/>
       <connection>db_staging</connection>
       <sendOneStatement>N</sendOneStatement>
-      <sql>UPDATE _sys_run_log
-SET src_last_sysdate = (SELECT max(last_update) FROM actor)
-WHERE src_table = 'actor' AND (SELECT max(last_update) FROM actor) IS NOT NULL;</sql>
-      <sqlfromfile>N</sqlfromfile>
+      <sql/>
+      <sqlfilename>${PROJECT_HOME}/datasets/update-last-update.sql</sqlfilename>
+      <sqlfromfile>Y</sqlfromfile>
       <useVariableSubstitution>N</useVariableSubstitution>
       <parallel>N</parallel>
-      <xloc>624</xloc>
-      <yloc>96</yloc>
-      <attributes_hac/>
-    </action>
-    <action>
-      <name>staging_category.hpl</name>
-      <description/>
-      <type>PIPELINE</type>
-      <attributes/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <clear_files>N</clear_files>
-      <clear_rows>N</clear_rows>
-      <create_parent_folder>N</create_parent_folder>
-      <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/staging_category.hpl</filename>
-      <loglevel>Basic</loglevel>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
-      <params_from_previous>N</params_from_previous>
-      <run_configuration>local</run_configuration>
-      <set_append_logfile>N</set_append_logfile>
-      <set_logfile>N</set_logfile>
-      <wait_until_finished>Y</wait_until_finished>
-      <parallel>N</parallel>
-      <xloc>176</xloc>
-      <yloc>288</yloc>
-      <attributes_hac/>
-    </action>
-    <action>
-      <name>update category last update </name>
-      <description/>
-      <type>SQL</type>
-      <attributes/>
-      <connection>db_staging</connection>
-      <sendOneStatement>N</sendOneStatement>
-      <sql>UPDATE _sys_run_log
-SET src_last_sysdate = (SELECT max(last_update) FROM category)
-WHERE src_table = 'category' AND (SELECT max(last_update) FROM category) IS NOT NULL;</sql>
-      <sqlfilename/>
-      <sqlfromfile>N</sqlfromfile>
-      <useVariableSubstitution>N</useVariableSubstitution>
-      <parallel>N</parallel>
-      <xloc>384</xloc>
-      <yloc>288</yloc>
+      <xloc>896</xloc>
+      <yloc>80</yloc>
       <attributes_hac/>
     </action>
   </actions>
   <hops>
+    <hop>
+      <from>staging_run_metadata.hpl</from>
+      <to>staging_exec_metadata.hpl</to>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
     <hop>
       <from>Start</from>
       <to>update metadata di staging</to>
@@ -145,28 +133,14 @@ WHERE src_table = 'category' AND (SELECT max(last_update) FROM category) IS NOT 
     </hop>
     <hop>
       <from>update metadata di staging</from>
-      <to>staging_actor.hpl</to>
+      <to>staging_run_metadata.hpl</to>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>staging_actor.hpl</from>
-      <to>update actor last update</to>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>update actor last update</from>
-      <to>staging_category.hpl</to>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>staging_category.hpl</from>
-      <to>update category last update </to>
+      <from>staging_exec_metadata.hpl</from>
+      <to>update last_update</to>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>

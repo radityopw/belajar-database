@@ -95,8 +95,8 @@ CREATE TABLE public.film (
     replacement_cost numeric(5,2) DEFAULT 19.99 NOT NULL,
     rating character varying(255),
     last_update timestamp without time zone DEFAULT now() NOT NULL,
-    special_features text[],
-    fulltext tsvector NOT NULL
+    special_features text,
+    fulltext text NOT NULL
 );
 
 
@@ -187,15 +187,15 @@ ALTER TABLE public.staff OWNER TO dw_user;
 --
 
 COPY public._sys_run_log (src_table, src_last_sysdate) FROM stdin;
-actor	\N
-category	\N
-customer	\N
-film	\N
-staff	\N
-rental	\N
-payment	\N
-film_actor	\N
-film_category	\N
+customer	2013-05-26 14:49:45.738
+actor	2013-05-26 14:47:57.62
+category	2006-02-15 09:46:27
+film	2013-05-26 14:50:58.951
+film_actor	2006-02-15 10:05:03
+film_category	2006-02-15 10:07:09
+payment	2007-05-14 13:44:29.996577
+rental	2006-02-23 09:12:08
+staff	2006-05-16 16:13:11.79328
 \.
 
 
