@@ -31,7 +31,7 @@
       <attributes_hac/>
     </action>
     <action>
-      <name>staging.hwf</name>
+      <name>staging_metadata.hwf</name>
       <description/>
       <type>WORKFLOW</type>
       <attributes/>
@@ -39,7 +39,9 @@
       <add_time>N</add_time>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/staging.hwf</filename>
+      <filename>${PROJECT_HOME}/staging_metadata.hwf</filename>
+      <logext/>
+      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -64,8 +66,6 @@
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
       <filename>${PROJECT_HOME}/loading.hwf</filename>
-      <logext/>
-      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -84,13 +84,13 @@
   <hops>
     <hop>
       <from>Start</from>
-      <to>staging.hwf</to>
+      <to>staging_metadata.hwf</to>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>staging.hwf</from>
+      <from>staging_metadata.hwf</from>
       <to>loading.hwf</to>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>

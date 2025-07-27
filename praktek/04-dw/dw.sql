@@ -130,34 +130,34 @@ ALTER SEQUENCE public.dim_category_id_seq OWNED BY public.dim_category.id;
 
 CREATE TABLE public.dim_customer (
     id bigint NOT NULL,
-    source_id integer NOT NULL,
-    first_name character varying(45) NOT NULL,
-    last_name character varying(45) NOT NULL,
-    email character varying(50) NOT NULL,
-    active boolean NOT NULL,
-    active_label character varying(10) NOT NULL,
-    address_id integer NOT NULL,
-    address text NOT NULL,
-    district character varying(20) NOT NULL,
-    city_id integer NOT NULL,
-    city_name character varying(50) NOT NULL,
-    country_id integer NOT NULL,
-    country_name character varying(50) NOT NULL,
-    postal_code character varying(10) NOT NULL,
-    phone character varying(20) NOT NULL,
-    store_id integer NOT NULL,
-    store_address_id integer NOT NULL,
-    store_address text NOT NULL,
-    store_district character varying(20) NOT NULL,
-    store_postal_code character varying(10) NOT NULL,
-    store_phone character varying(20) NOT NULL,
-    store_city_id integer NOT NULL,
-    store_city_name character varying(50) NOT NULL,
-    store_country_id integer NOT NULL,
-    store_country_name character varying(50) NOT NULL,
-    date_active date NOT NULL,
-    date_expired date NOT NULL,
-    version integer NOT NULL
+    source_id integer,
+    first_name character varying(45),
+    last_name character varying(45),
+    email character varying(50),
+    active boolean,
+    active_label character varying(10),
+    address_id integer,
+    address text,
+    district character varying(20),
+    city_id integer,
+    city_name character varying(50),
+    country_id integer,
+    country_name character varying(50),
+    postal_code character varying(10),
+    phone character varying(20),
+    store_id integer,
+    store_address_id integer,
+    store_address text,
+    store_district character varying(20),
+    store_postal_code character varying(10),
+    store_phone character varying(20),
+    store_city_id integer,
+    store_city_name character varying(50),
+    store_country_id integer,
+    store_country_name character varying(50),
+    date_active date,
+    date_expired date,
+    version integer
 );
 
 
@@ -358,15 +358,15 @@ ALTER SEQUENCE public.dim_customer_id_seq OWNED BY public.dim_customer.id;
 
 CREATE TABLE public.dim_film (
     id bigint NOT NULL,
-    source_id integer NOT NULL,
-    title character varying(255) NOT NULL,
-    description text NOT NULL,
-    release_year integer NOT NULL,
-    language_id integer NOT NULL,
-    language_name character varying(20) NOT NULL,
-    date_active date NOT NULL,
-    date_expired date NOT NULL,
-    version integer NOT NULL
+    source_id integer,
+    title character varying(255),
+    description text,
+    release_year integer,
+    language_id integer,
+    language_name character varying(20),
+    date_active date,
+    date_expired date,
+    version integer
 );
 
 
@@ -434,37 +434,37 @@ ALTER SEQUENCE public.dim_film_id_seq OWNED BY public.dim_film.id;
 
 CREATE TABLE public.dim_staff (
     id bigint NOT NULL,
-    source_id integer NOT NULL,
-    first_name character varying(45) NOT NULL,
-    last_name character varying(45) NOT NULL,
-    address_id integer NOT NULL,
-    address_detail text NOT NULL,
-    district character varying(20) NOT NULL,
-    postal_code character varying(10) NOT NULL,
-    phone character varying(20) NOT NULL,
-    city_id integer NOT NULL,
-    city_name character varying(50) NOT NULL,
-    country_id integer NOT NULL,
-    country_name character varying(50) NOT NULL,
-    email character varying(50) NOT NULL,
-    active_id boolean NOT NULL,
-    active_label character varying(10) NOT NULL,
-    store_id integer NOT NULL,
-    store_manager_id integer NOT NULL,
-    store_manager_first_name character varying(45) NOT NULL,
-    store_manager_last_name character varying(45) NOT NULL,
-    store_address_id integer NOT NULL,
-    store_address_detail text NOT NULL,
-    store_district character varying(20) NOT NULL,
-    store_postal_code character varying(10) NOT NULL,
-    store_phone character varying(20) NOT NULL,
-    store_city_id integer NOT NULL,
-    store_city_name character varying(50) NOT NULL,
-    store_country_id integer NOT NULL,
-    store_country_name character varying(50) NOT NULL,
-    date_active date NOT NULL,
-    date_expired date NOT NULL,
-    version integer NOT NULL
+    source_id integer,
+    first_name character varying(45),
+    last_name character varying(45),
+    address_id integer,
+    address_detail text,
+    district character varying(20),
+    postal_code character varying(10),
+    phone character varying(20),
+    city_id integer,
+    city_name character varying(50),
+    country_id integer,
+    country_name character varying(50),
+    email character varying(50),
+    active_id boolean,
+    active_label character varying(10),
+    store_id integer,
+    store_manager_id integer,
+    store_manager_first_name character varying(45),
+    store_manager_last_name character varying(45),
+    store_address_id integer,
+    store_address_detail text,
+    store_district character varying(20),
+    store_postal_code character varying(10),
+    store_phone character varying(20),
+    store_city_id integer,
+    store_city_name character varying(50),
+    store_country_id integer,
+    store_country_name character varying(50),
+    date_active date,
+    date_expired date,
+    version integer
 );
 
 
@@ -797,105 +797,6 @@ ALTER TABLE ONLY public.dim_film ALTER COLUMN id SET DEFAULT nextval('public.dim
 --
 
 ALTER TABLE ONLY public.dim_staff ALTER COLUMN id SET DEFAULT nextval('public.dim_staff_id_seq'::regclass);
-
-
---
--- Data for Name: dim_actor; Type: TABLE DATA; Schema: public; Owner: dw_user
---
-
-COPY public.dim_actor (id, source_id, first_name, last_name) FROM stdin;
-\.
-
-
---
--- Data for Name: dim_category; Type: TABLE DATA; Schema: public; Owner: dw_user
---
-
-COPY public.dim_category (id, source_id, name) FROM stdin;
-\.
-
-
---
--- Data for Name: dim_customer; Type: TABLE DATA; Schema: public; Owner: dw_user
---
-
-COPY public.dim_customer (id, source_id, first_name, last_name, email, active, active_label, address_id, address, district, city_id, city_name, country_id, country_name, postal_code, phone, store_id, store_address_id, store_address, store_district, store_postal_code, store_phone, store_city_id, store_city_name, store_country_id, store_country_name, date_active, date_expired, version) FROM stdin;
-\.
-
-
---
--- Data for Name: dim_film; Type: TABLE DATA; Schema: public; Owner: dw_user
---
-
-COPY public.dim_film (id, source_id, title, description, release_year, language_id, language_name, date_active, date_expired, version) FROM stdin;
-\.
-
-
---
--- Data for Name: dim_staff; Type: TABLE DATA; Schema: public; Owner: dw_user
---
-
-COPY public.dim_staff (id, source_id, first_name, last_name, address_id, address_detail, district, postal_code, phone, city_id, city_name, country_id, country_name, email, active_id, active_label, store_id, store_manager_id, store_manager_first_name, store_manager_last_name, store_address_id, store_address_detail, store_district, store_postal_code, store_phone, store_city_id, store_city_name, store_country_id, store_country_name, date_active, date_expired, version) FROM stdin;
-\.
-
-
---
--- Data for Name: dim_waktu; Type: TABLE DATA; Schema: public; Owner: dw_user
---
-
-COPY public.dim_waktu (id, day, month, year, week, weekend_status, quarter) FROM stdin;
-\.
-
-
---
--- Data for Name: fact_film_actor; Type: TABLE DATA; Schema: public; Owner: dw_user
---
-
-COPY public.fact_film_actor (dim_actor_id, dim_film_id, dim_category_id, count) FROM stdin;
-\.
-
-
---
--- Data for Name: fact_rental; Type: TABLE DATA; Schema: public; Owner: dw_user
---
-
-COPY public.fact_rental (dim_customer_id, dim_film_id, dim_waktu_id, dim_staff_id, amount, rental_days) FROM stdin;
-\.
-
-
---
--- Name: dim_actor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dw_user
---
-
-SELECT pg_catalog.setval('public.dim_actor_id_seq', 1, false);
-
-
---
--- Name: dim_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dw_user
---
-
-SELECT pg_catalog.setval('public.dim_category_id_seq', 1, false);
-
-
---
--- Name: dim_customer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dw_user
---
-
-SELECT pg_catalog.setval('public.dim_customer_id_seq', 1, false);
-
-
---
--- Name: dim_film_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dw_user
---
-
-SELECT pg_catalog.setval('public.dim_film_id_seq', 1, false);
-
-
---
--- Name: dim_staff_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dw_user
---
-
-SELECT pg_catalog.setval('public.dim_staff_id_seq', 1, false);
 
 
 --
