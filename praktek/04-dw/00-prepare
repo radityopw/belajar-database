@@ -32,8 +32,13 @@ cd $current_dir
 rm -rf $dir
 
 
+cp staging.sql /tmp
+chmod 777 /tmp/staging.sql
 
 sudo -u postgres psql -c "CREATE DATABASE staging_rental WITH OWNER dw_user;"
+sudo -u postgres psql postgresql://dw_user:$PGPASSWORD@127.0.0.1:5432/staging_rental -f /tmp/staging.sql
+
+rm /tmp/staging.sql
 
 cp dw.sql /tmp
 chmod 777 /tmp/dw.sql
