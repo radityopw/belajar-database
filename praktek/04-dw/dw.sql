@@ -737,7 +737,7 @@ CREATE TABLE public.fact_rental (
     amount numeric(5,2),
     rental_days integer,
     CONSTRAINT cek_amount CHECK (((amount IS NULL) OR (amount >= (0)::numeric))),
-    CONSTRAINT cek_rental_days CHECK (((rental_days IS NULL) OR (rental_days > 0)))
+    CONSTRAINT cek_rental_days CHECK (((rental_days IS NULL) OR (rental_days >= 0)))
 );
 
 
